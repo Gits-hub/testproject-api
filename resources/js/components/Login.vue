@@ -2,7 +2,7 @@
 
 <div class="max-w-80 mt-24 mx-auto flex flex-col">
     <h2 class="text-lg"><span class="font-bold text-slate-500">Fill in your email ID below</span></h2>
-        <form class="grid gap-y-4 mt-5" @submit.prevent="submit">
+        <form class="grid gap-y-4 mt-5" @submit.prevent="submit" method="POST">
             <div>
             <label for="email" class="block text-sm font-bold ml-1 mb-2 dark:text-white">Email address</label>
             <div class="relative">
@@ -17,8 +17,26 @@
 </template>
 
 <script>
+    import axios from "axios";
+
     export default {
         name: "Login",
-        components: {}
+        components: {},
+        data() {
+            return {
+                email: ''
+            }
+        },
+        methods: {
+            submit(){
+                axios.post('http://localhost/TestProject/public/api/login').then(function (response) 
+                {
+                    console.log(response.data.message);
+                }).catch(function (err) 
+                {
+                    console.log(err)
+                })
+            }
+        }
     }
 </script>

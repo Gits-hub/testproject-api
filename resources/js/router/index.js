@@ -13,7 +13,7 @@ const routes = [
         path: '/TestProject/public/login',
         name: 'Login',
         component: Login
-    }
+    },
 ]
 
 const router = createRouter({ 
